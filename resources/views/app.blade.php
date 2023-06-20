@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="cupcake">
+<html data-theme="light">
 
 <head>
   <meta charset="utf-8" />
@@ -10,7 +10,9 @@
 </head>
 
 <body>
-  @inertia
+  <div class="w-full h-full p-10">
+    @inertia
+  </div>
 </body>
 
 </html>
