@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html theme="autumn">
+<html data-theme="cupcake">
 
 <head>
   <meta charset="utf-8" />
