@@ -2,34 +2,19 @@
     <nav class="mt-6">
         <ul class="list-disc">
             <li>
-                <Link
-                    href="/"
-                    class="text-blue-500 hover:underline"
-                    :class="{
-                        'font-bold underline': $page.component === 'Home',
-                    }"
-                    >Home</Link
-                >
+                <NavLink :active="$page.component === 'Home'" href="/">
+                    Home
+                </NavLink>
             </li>
             <li>
-                <Link
-                    href="/users"
-                    class="text-blue-500 hover:underline"
-                    :class="{
-                        'font-bold underline': $page.component === 'Users',
-                    }"
-                    >Users</Link
-                >
+                <NavLink :active="$page.component === 'Users'" href="/users">
+                    Users
+                </NavLink>
             </li>
             <li>
-                <Link
-                    href="/settings"
-                    class="text-blue-500 hover:underline"
-                    :class="{
-                        'font-bold underline': $page.url === '/settings',
-                    }"
-                    >Settings</Link
-                >
+                <NavLink :active="$page.url === '/settings'" href="/settings">
+                    Settings
+                </NavLink>
             </li>
             <li>
                 <Link
@@ -46,8 +31,9 @@
 
 <script>
 import { Link } from "@inertiajs/vue3";
+import NavLink from "./NavLink.vue";
 
-export default { components: { Link } };
+export default { components: { Link, NavLink } };
 </script>
 
 <style></style>
