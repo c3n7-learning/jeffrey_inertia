@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="w-full h-full p-10">
+  <div class="w-full h-full">
     @inertia
   </div>
 </body>

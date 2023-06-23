@@ -1,9 +1,10 @@
 <template>
     <Link
-        class="text-blue-500 hover:underline"
+        class="btn btn-ghost btn-sm"
         :class="{
-            'font-bold underline': active,
+            shadow: active,
         }"
+        :href="href"
     >
         <slot />
     </Link>
@@ -15,6 +16,7 @@ export default {
     components: { Link },
     props: {
         active: Boolean,
+        href: String,
     },
 };
 </script>

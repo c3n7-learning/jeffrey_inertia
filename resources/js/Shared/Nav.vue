@@ -1,32 +1,30 @@
 <template>
-    <nav class="mt-6">
-        <ul class="list-disc">
-            <li>
+    <div class="navbar bg-base-200">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl">My App</a>
+        </div>
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
                 <NavLink :active="$page.component === 'Home'" href="/">
                     Home
                 </NavLink>
-            </li>
-            <li>
+
                 <NavLink :active="$page.component === 'Users'" href="/users">
                     Users
                 </NavLink>
-            </li>
-            <li>
+
                 <NavLink :active="$page.url === '/settings'" href="/settings">
                     Settings
                 </NavLink>
-            </li>
-            <li>
-                <Link
-                    href="/logout"
-                    method="post"
-                    as="button"
-                    class="text-blue-500 hover:underline"
-                    >Log Out</Link
-                >
-            </li>
-        </ul>
-    </nav>
+
+                <li>
+                    <Link href="/logout" method="post" as="button">
+                        <span class="btn btn-ghost btn-sm"> Log Out </span>
+                    </Link>
+                </li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <script>
