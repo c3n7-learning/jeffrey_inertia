@@ -1,12 +1,12 @@
 <template>
-    <h1>Settings</h1>
-
-    <Nav />
+    <Layout>
+        <h1>Settings</h1>
+    </Layout>
 </template>
 
 <script>
-import Nav from "../Shared/Nav.vue";
-export default { components: { Nav } };
+import Layout from "../Shared/Layout.vue";
+export default { components: { Layout } };
 </script>
 
 <style></style>
