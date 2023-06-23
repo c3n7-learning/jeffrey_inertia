@@ -1,7 +1,10 @@
 <template>
     <div class="navbar bg-base-200">
         <div class="flex-1">
-            <a class="btn btn-ghost normal-case text-xl">My App</a>
+            <div class="flex flex-row items-center">
+                <a class="btn btn-ghost normal-case text-xl">My App</a>
+                Welcome Back, {{ username }}
+            </div>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1">
@@ -31,7 +34,14 @@
 import { Link } from "@inertiajs/vue3";
 import NavLink from "./NavLink.vue";
 
-export default { components: { Link, NavLink } };
+export default {
+    components: { Link, NavLink },
+    computed: {
+        username() {
+            return this.$page.props.auth.user.username;
+        },
+    },
+};
 </script>
 
 <style></style>
