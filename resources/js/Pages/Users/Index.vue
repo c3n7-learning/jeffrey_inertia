@@ -11,7 +11,12 @@
     <div class="flex items-end justify-between">
         <h1 class="text-3xl">Users</h1>
 
-        <Link href="/users/create" class="btn btn-primary btn-sm">New</Link>
+        <Link
+            v-if="can.createUser"
+            href="/users/create"
+            class="btn btn-primary btn-sm"
+            >New</Link
+        >
     </div>
 
     <div class="w-full flex justify-end">
@@ -39,6 +44,7 @@
                     <td>{{ user.name }}</td>
                     <td>
                         <Link
+                            v-if="user.can.edit"
                             :href="`/users/${user.id}/edit`"
                             class="btn btn-primary btn-xs"
                         >
@@ -64,6 +70,7 @@ import { debounce } from "lodash";
 let props = defineProps({
     users: Object,
     filters: Object,
+    can: Object,
 });
 
 let search = ref(props?.filters?.search ?? "");
