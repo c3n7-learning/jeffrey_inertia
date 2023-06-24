@@ -69,13 +69,19 @@
             />
         </div>
 
-        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        <button
+            type="submit"
+            class="btn btn-primary mt-4"
+            :disabled="processing"
+        >
+            Submit
+        </button>
     </form>
 </template>
 
 <script setup>
 import { router } from "@inertiajs/vue3";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 
 defineProps({
     errors: Object,
@@ -88,8 +94,18 @@ let form = reactive({
     password_confirmation: "",
 });
 
+let processing = ref(false);
+
 let submit = () => {
-    router.post("/users", form);
+    processing.value = true;
+    router.post("/users", form, {
+        onStart: () => {
+            processing.value = true;
+        },
+        onFinish: () => {
+            processing.value = false;
+        },
+    });
 };
 </script>
 
