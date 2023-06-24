@@ -5,6 +5,8 @@
 
     <div class="flex items-end justify-between">
         <h1 class="text-3xl">Create New User</h1>
+
+        <Link href="/users" class="btn btn-primary btn-sm">Back</Link>
     </div>
 
     <form @submit.prevent="submit" method="post" class="space-y-2">
@@ -17,6 +19,11 @@
                 class="input input-bordered w-full"
                 v-model="form.name"
             />
+            <label class="label" v-if="$page.props.errors.name">
+                <span class="label-text text-error">
+                    {{ $page.props.errors.name }}
+                </span>
+            </label>
         </div>
 
         <div class="form-control w-full max-w-md">
@@ -28,6 +35,11 @@
                 class="input input-bordered w-full"
                 v-model="form.email"
             />
+            <label class="label" v-if="$page.props.errors.email">
+                <span class="label-text text-error">
+                    {{ $page.props.errors.email }}
+                </span>
+            </label>
         </div>
 
         <div class="form-control w-full max-w-md">
@@ -39,6 +51,11 @@
                 class="input input-bordered w-full"
                 v-model="form.password"
             />
+            <label class="label" v-if="errors.password">
+                <span class="label-text text-error">
+                    {{ errors.password }}
+                </span>
+            </label>
         </div>
 
         <div class="form-control w-full max-w-md">
@@ -59,6 +76,10 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
 import { reactive } from "vue";
+
+defineProps({
+    errors: Object,
+});
 
 let form = reactive({
     name: "",

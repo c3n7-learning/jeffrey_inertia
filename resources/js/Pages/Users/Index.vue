@@ -11,6 +11,10 @@
     <div class="flex items-end justify-between">
         <h1 class="text-3xl">Users</h1>
 
+        <Link href="/users/create" class="btn btn-primary btn-sm">New</Link>
+    </div>
+
+    <div class="w-full flex justify-end">
         <input
             type="text"
             placeholder="Search..."
