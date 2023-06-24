@@ -1,6 +1,13 @@
 <template>
     <header>
-        <Head title="App" />
+        <Head>
+            <title>App</title>
+            <meta
+                type="description"
+                content="Interesting information"
+                head-key="description"
+            />
+        </Head>
         <Nav />
     </header>
 

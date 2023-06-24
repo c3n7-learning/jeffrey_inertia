@@ -1,5 +1,12 @@
 <template>
-    <Head title="App - Users" />
+    <Head>
+        <title>App - Users</title>
+        <meta
+            type="description"
+            content="More interesting information"
+            head-key="description"
+        />
+    </Head>
 
     <h1 class="text-3xl">Users</h1>
 
