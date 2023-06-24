@@ -20,7 +20,10 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
-    $users = User::paginate(10);
+    $users = User::paginate(10)->through(fn ($user) => [
+        'id' => $user->id,
+        'name' => $user->name
+    ]);
     return Inertia::render('Users', ['users' => $users]);
 });
 
