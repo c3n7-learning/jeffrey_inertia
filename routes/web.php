@@ -24,15 +24,33 @@ Route::get('/users', function () {
     $search = request()->query('search');
     $users = User::query()
         ->when($search, fn ($q) => $q->where('name', 'like', "%{$search}%"))
+        ->orderByDesc('id')
         ->paginate(10)
         ->withQueryString()
         ->through(fn ($user) => [
             'id' => $user->id,
             'name' => $user->name
         ]);
-    return Inertia::render('Users', [
+    return Inertia::render('Users/Index', [
         'users' => $users, 'filters' => Request::only('search')
     ]);
+});
+
+Route::get('/users/create', function () {
+    return Inertia::render('Users/Create');
+});
+
+Route::post('/users', function () {
+
+    $attributes = Request::validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|confirmed'
+    ]);
+
+    User::create($attributes);
+
+    return redirect("/users");
 });
 
 Route::get('/settings', function () {
