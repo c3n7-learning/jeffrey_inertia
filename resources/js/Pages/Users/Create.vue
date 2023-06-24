@@ -35,9 +35,9 @@
                 class="input input-bordered w-full"
                 v-model="form.email"
             />
-            <label class="label" v-if="$page.props.errors.email">
+            <label class="label" v-if="form.errors.email">
                 <span class="label-text text-error">
-                    {{ $page.props.errors.email }}
+                    {{ form.errors.email }}
                 </span>
             </label>
         </div>
@@ -72,7 +72,7 @@
         <button
             type="submit"
             class="btn btn-primary mt-4"
-            :disabled="processing"
+            :disabled="form.processing"
         >
             Submit
         </button>
@@ -80,32 +80,21 @@
 </template>
 
 <script setup>
-import { router } from "@inertiajs/vue3";
-import { reactive, ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
 
 defineProps({
     errors: Object,
 });
 
-let form = reactive({
+let form = useForm({
     name: "",
     email: "",
     password: "",
     password_confirmation: "",
 });
 
-let processing = ref(false);
-
 let submit = () => {
-    processing.value = true;
-    router.post("/users", form, {
-        onStart: () => {
-            processing.value = true;
-        },
-        onFinish: () => {
-            processing.value = false;
-        },
-    });
+    form.post("/users");
 };
 </script>
 

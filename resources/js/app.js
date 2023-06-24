@@ -9,7 +9,7 @@ createInertiaApp({
             eager: false,
         });
         let page = await pages[`./Pages/${name}.vue`]();
-        page.default.layout ??= Layout;
+        page.default.layout = page.default.layout === undefined ? Layout : null;
         return page;
     },
     setup({ el, App, props, plugin }) {
