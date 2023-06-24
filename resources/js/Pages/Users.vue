@@ -1,4 +1,6 @@
 <template>
+    <Head title="App - Users" />
+
     <h1 class="text-3xl">Users</h1>
 
     <div class="mt-[500px]">
@@ -8,15 +10,13 @@
     <Link href="/users" preserve-scroll class="text-primary">Refresh</Link>
 </template>
 
-<script>
+<script setup>
 import { Link } from "@inertiajs/vue3";
+import { Head } from "@inertiajs/vue3";
 
-export default {
-    components: { Link },
-    props: {
-        time: String,
-    },
-};
+defineProps({
+    time: String,
+});
 </script>
 
 <style></style>
