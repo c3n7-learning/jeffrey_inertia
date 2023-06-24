@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>App - Users</title>
+        <title>Users</title>
         <meta
             type="description"
             content="More interesting information"
@@ -19,7 +19,6 @@
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { Head } from "@inertiajs/vue3";
 
 defineProps({
     time: String,
