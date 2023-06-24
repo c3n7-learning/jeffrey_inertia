@@ -39,24 +39,14 @@
             </tbody>
         </table>
 
-        <nav class="flex w-full justify-end">
-            <div class="join">
-                <Component
-                    :is="link.url ? 'Link' : 'span'"
-                    v-for="(link, i) in users.links"
-                    :href="link.url ?? '/'"
-                    :key="i"
-                    v-html="link.label"
-                    class="join-item btn"
-                    preserve-scroll
-                />
-            </div>
+        <nav class="flex w-full justify-center">
+            <Pagination :links="users.links" />
         </nav>
     </div>
 </template>
 
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import Pagination from "../Shared/Pagination.vue";
 
 defineProps({
     users: Object,
