@@ -8,11 +8,17 @@
         />
     </Head>
 
-    <h1 class="text-3xl">Users</h1>
+    <div class="flex items-end justify-between">
+        <h1 class="text-3xl">Users</h1>
 
-    <ul>
-        <li />
-    </ul>
+        <input
+            type="text"
+            placeholder="Search..."
+            class="input input-bordered input-sm my-2"
+            name=""
+            v-model="search"
+        />
+    </div>
 
     <div class="overflow-x-auto">
         <table class="table">
@@ -46,10 +52,23 @@
 </template>
 
 <script setup>
+import { ref, watch } from "vue";
 import Pagination from "../Shared/Pagination.vue";
+import { router } from "@inertiajs/vue3";
 
-defineProps({
+let props = defineProps({
     users: Object,
+    filters: Object,
+});
+
+let search = ref(props?.filters?.search ?? "");
+
+watch(search, (value) => {
+    router.get(
+        "/users",
+        { search: value },
+        { preserveState: true, replace: true }
+    );
 });
 </script>
 
