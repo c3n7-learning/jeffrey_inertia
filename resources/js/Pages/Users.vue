@@ -41,12 +41,14 @@
 
         <nav class="flex w-full justify-end">
             <div class="join">
-                <Link
+                <Component
+                    :is="link.url ? 'Link' : 'span'"
                     v-for="(link, i) in users.links"
                     :href="link.url ?? '/'"
                     :key="i"
                     v-html="link.label"
                     class="join-item btn"
+                    preserve-scroll
                 />
             </div>
         </nav>
