@@ -1,12 +1,9 @@
 <template>
-    <Layout>
-        <h1>Settings</h1>
-    </Layout>
+    <h1>Settings</h1>
 </template>
 
 <script>
-import Layout from "../Shared/Layout.vue";
-export default { components: { Layout } };
+export default {};
 </script>
 
 <style></style>
